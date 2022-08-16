@@ -27,3 +27,16 @@
     font-size: 50px;
 
 }
+
+.score {
+    font-weight: bold;
+    text-align: center;
+    flex: 1 1 0;
+    font-size: 20px;
+}
+
+#score-view {
+    display: flex;
+    justify-content: center;
+
+}
