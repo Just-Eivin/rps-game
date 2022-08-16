@@ -15,6 +15,15 @@
 
 #game-container div {
     border: red 1px solid;
-    width: auto;
+}
+
+#control-panel {
+    text-align: center;
+}
+
+.shape-button {
+    width: 100px;
     height: 100px;
+    font-size: 50px;
+
 }

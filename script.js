@@ -55,3 +55,28 @@ function compareShapes(playerShape, computerShape) {
     }
 }
 
+function playGame() {
+    console.log('match start');
+}
+
+const shapeButtons = document.querySelectorAll('.shape-button');
+const selectedShapeText = document.querySelector('#selected-shape');
+const playButton = document.querySelector('#play-button');
+
+let selectedShape = '';
+
+shapeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        selectedShape = button.textContent;
+        selectedShapeText.textContent = `Selected shape: ${selectedShape}`;
+    })
+})
+
+
+playButton.addEventListener('click', () => {
+    (selectedShape == '🪨' || selectedShape == '📜' || selectedShape == '✂️') ? playGame() : alert("You have to choose your symbol before you can play.");
+})
+
+
+
+
