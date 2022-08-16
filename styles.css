@@ -1,0 +1,20 @@
+#page-container {
+    display: flex;
+    justify-content: center;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    border: black 2px solid;
+    width: 1000px;
+    height: auto;
+}
+
+#game-container div {
+    border: red 1px solid;
+    width: auto;
+    height: 100px;
+}
