@@ -55,28 +55,31 @@ function compareShapes(playerShape, computerShape) {
     }
 }
 
-function playGame() {
-    console.log('match start');
+function getPlayerShape(shape) {
+    switch (shape) {
+        case "🪨":
+            return "ROCK";
+
+        case "📜":
+            return "PAPER";
+
+        case "✂️":
+            return "SCISSORS";
+
+        default:
+            return null;
+    }
 }
 
-const shapeButtons = document.querySelectorAll('.shape-button');
-const selectedShapeText = document.querySelector('#selected-shape');
-const playButton = document.querySelector('#play-button');
+const buttons = document.querySelectorAll('shape-button');
 
-let selectedShape = '';
+buttons.forEach((button) => {
 
-shapeButtons.forEach((button) => {
+    // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        selectedShape = button.textContent;
-        selectedShapeText.textContent = `Selected shape: ${selectedShape}`;
-    })
-})
-
-
-playButton.addEventListener('click', () => {
-    (selectedShape == '🪨' || selectedShape == '📜' || selectedShape == '✂️') ? playGame() : alert("You have to choose your symbol before you can play.");
-})
-
+      alert(button.id);
+    });
+  });
 
 
 
