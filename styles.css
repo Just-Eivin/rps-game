@@ -40,3 +40,19 @@
     justify-content: center;
 
 }
+
+#match-view {
+    display: flex;
+    justify-content: center;
+}
+
+.shape-display {
+    flex: 1 1 0;
+
+    text-align: center;
+}
+
+.shape {
+    font-size: 64px;
+    text-shadow: 0px 0px 5px;
+}
