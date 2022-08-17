@@ -71,15 +71,72 @@ function getPlayerShape(shape) {
     }
 }
 
-const buttons = document.querySelectorAll('shape-button');
+function getEmoji(textShape) {
+    switch (textShape) {
+        case 'ROCK':
+            return '🪨';
+        case 'PAPER':
+            return '📜';
+        case 'SCISSORS':
+            return '✂️';
+    }
+}
 
-buttons.forEach((button) => {
+function playGame() {
+    function playRound(playerShape) {
+        const computerShape = getComputerShape();
+        const result = compareShapes(playerShape, computerShape);
+        playerShapeDisplay.textContent = getEmoji(playerShape);
+        computerShapeDisplay.textContent = getEmoji(computerShape);
 
-    // and for each one we add a 'click' listener
-    button.addEventListener('click', () => {
-      alert(button.id);
+        switch (result) {
+            case "win":
+                playerScore++;
+                playerScoreCounter.textContent = playerScore;
+                console.log(`You picked ${playerShape} and the computer picked ${computerShape}. \nYou WIN.`);
+                break;
+            case "tie":
+                console.log(`You picked ${playerShape} and the computer picked ${computerShape}. \nYou TIE.`);
+                break;
+            case "lose":
+                computerScore++;
+                computerScoreCounter.textContent = computerScore;
+                console.log(`You picked ${playerShape} and the computer picked ${computerShape}. \nYou LOSE.`);
+                break;
+            default:
+                alert(`error`);
+                break;
+        }
+    }
+
+    const shapeButtons = document.querySelectorAll('.shape-button');
+    const playButton = document.querySelector('#play-button')
+    const playerScoreCounter = document.querySelector('#player-score');
+    const computerScoreCounter = document.querySelector('#comp-score');
+    const playerShapeDisplay = document.querySelector('#player-display');
+    const computerShapeDisplay = document.querySelector('#computer-display');
+    let selectedShape;
+    let playerScore = 0, computerScore = 0;
+
+    shapeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            selectedShape = button.id;
+        });
     });
-  });
 
+    playButton.addEventListener('click', () => {
+        if(selectedShape == "ROCK" || selectedShape == "PAPER" || selectedShape == "SCISSORS"){
+            playRound(selectedShape);
+        } else alert("You have to choose a shape, before you can play.");
+    })
+
+
+
+
+}
+
+
+
+playGame();
 
 
