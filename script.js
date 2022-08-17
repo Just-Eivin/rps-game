@@ -21,35 +21,35 @@ function getComputerShape() {
 function compareShapes(playerShape, computerShape) {
 
     if (playerShape == computerShape) {
-        return "tie";
+        return "TIE";
     }
 
     switch (playerShape) {
 
         case "ROCK":
             if (computerShape == "SCISSORS") {
-                return "win";
+                return "WIN";
             }
             else {
-                return "lose";
+                return "LOSE";
             }
             break;
 
         case "PAPER":
             if (computerShape == "ROCK") {
-                return "win";
+                return "WIN";
             }
             else {
-                return "lose";
+                return "LOSE";
             }
             break;
 
         case "SCISSORS":
             if (computerShape == "PAPER") {
-                return "win";
+                return "WIN";
             }
             else {
-                return "lose";
+                return "LOSE";
             }
             break;
     }
@@ -74,15 +74,28 @@ function getPlayerShape(shape) {
 function getEmoji(textShape) {
     switch (textShape) {
         case 'ROCK':
-            return '🪨';
+            return '✊';
         case 'PAPER':
-            return '📜';
+            return '🖐';
         case 'SCISSORS':
-            return '✂️';
+            return '✌';
     }
 }
 
+
 function playGame() {
+    function resetSelection () {
+        shapeButtons.forEach((button) => {
+            button.classList.remove('selected-button')
+            selectedShape = undefined;
+        });
+    }
+
+    function sendToLog(playerShape, computerShape, matchResult, round) {
+        matchLog.textContent +=`Round ${round}:\nYou picked ${playerShape} and the computer picked ${computerShape}. \nYou ${matchResult}.\n\n`;
+        logDiv.scrollTop = logDiv.scrollHeight;
+    }
+
     function playRound(playerShape) {
         const computerShape = getComputerShape();
         const result = compareShapes(playerShape, computerShape);
@@ -90,18 +103,24 @@ function playGame() {
         computerShapeDisplay.textContent = getEmoji(computerShape);
 
         switch (result) {
-            case "win":
+            case "WIN":
                 playerScore++;
                 playerScoreCounter.textContent = playerScore;
-                console.log(`You picked ${playerShape} and the computer picked ${computerShape}. \nYou WIN.`);
+                round++;
+                sendToLog(playerShape, computerShape, result, round);
+                resetSelection();
                 break;
-            case "tie":
-                console.log(`You picked ${playerShape} and the computer picked ${computerShape}. \nYou TIE.`);
+            case "TIE":
+                round++;
+                sendToLog(playerShape, computerShape, result, round);
+                resetSelection();
                 break;
-            case "lose":
+            case "LOSE":
                 computerScore++;
                 computerScoreCounter.textContent = computerScore;
-                console.log(`You picked ${playerShape} and the computer picked ${computerShape}. \nYou LOSE.`);
+                round++;
+                sendToLog(playerShape, computerShape, result, round);
+                resetSelection();
                 break;
             default:
                 alert(`error`);
@@ -115,12 +134,20 @@ function playGame() {
     const computerScoreCounter = document.querySelector('#comp-score');
     const playerShapeDisplay = document.querySelector('#player-display');
     const computerShapeDisplay = document.querySelector('#computer-display');
+    const matchLog = document.querySelector('#log-text');
+    const logDiv = document.querySelector('#match-log');
+
     let selectedShape;
+    let round = 0;
     let playerScore = 0, computerScore = 0;
 
     shapeButtons.forEach((button) => {
         button.addEventListener('click', () => {
+            shapeButtons.forEach((button) => {
+                button.classList.remove('selected-button')
+            });
             selectedShape = button.id;
+            button.classList.add('selected-button')
         });
     });
 

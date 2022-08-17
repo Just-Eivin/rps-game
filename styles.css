@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    font-family: "Roboto", Times, sans-serif;
+}
+
 #page-container {
     display: flex;
     justify-content: center;
@@ -14,7 +20,7 @@
 }
 
 #game-container div {
-    border: red 1px solid;
+    border: seagreen 1px solid;
 }
 
 #control-panel {
@@ -25,7 +31,10 @@
     width: 100px;
     height: 100px;
     font-size: 50px;
+}
 
+.selected-button {
+    border: red 1px solid;
 }
 
 .score {
@@ -54,5 +63,12 @@
 
 .shape {
     font-size: 64px;
-    text-shadow: 0px 0px 5px;
+    text-shadow: 0px 0px 2px;
+}
+
+#match-log {
+    overflow: hidden;
+    height: 200px;
+    overflow-y: scroll;
+    padding-left: 5px;
 }
