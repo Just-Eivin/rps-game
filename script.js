@@ -82,6 +82,16 @@ function getEmoji(textShape) {
     }
 }
 
+function resetAnim(){
+    const animElements = document.querySelectorAll('.scale-up-center');
+
+    animElements.forEach(animElement => {
+        animElement.addEventListener('animationend', () => {
+            animElement.classList.remove('scale-up-center')
+        });
+    });
+}
+
 
 function playGame() {
     function resetSelection () {
@@ -101,6 +111,8 @@ function playGame() {
         const result = compareShapes(playerShape, computerShape);
         playerShapeDisplay.textContent = getEmoji(playerShape);
         computerShapeDisplay.textContent = getEmoji(computerShape);
+        playerShapeDisplay.classList.add('scale-up-center');
+        computerShapeDisplay.classList.add('scale-up-center');
 
         switch (result) {
             case "WIN":
@@ -108,11 +120,13 @@ function playGame() {
                 playerScoreCounter.textContent = playerScore;
                 round++;
                 sendToLog(playerShape, computerShape, result, round);
+                resetAnim();
                 resetSelection();
                 break;
             case "TIE":
                 round++;
                 sendToLog(playerShape, computerShape, result, round);
+                resetAnim();
                 resetSelection();
                 break;
             case "LOSE":
@@ -120,6 +134,7 @@ function playGame() {
                 computerScoreCounter.textContent = computerScore;
                 round++;
                 sendToLog(playerShape, computerShape, result, round);
+                resetAnim();
                 resetSelection();
                 break;
             default:
