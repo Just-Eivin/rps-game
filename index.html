@@ -14,30 +14,39 @@
         <div id="game-container">
 
             <div id="score-view">
-                <div class="score">
-                    <p>Player</p>
-                    <p id="player-score">0</p>
+                <div class="score player-score">
+                    <p class="name-display">Player</p>
+                    <p class="name-display" id="player-score">0</p>
                 </div>
-                <div class="score">
-                    <p>Computer</p>
-                    <p id="comp-score">0</p>
+                <div class="score computer-score">
+                    <p class="name-display">Computer</p>
+                    <p class="name-display" id="comp-score">0</p>
                 </div>
+            </div>
+
+            <div id="round-view">
+                <p id="round-text-display" class="score">Waiting for start
+                </p>
             </div>
 
             <div id="match-view">
                 <div class="shape-display">
-                    <p id="player-display" class="shape">&nbsp;</p>
-                    <p>Your shape</p>
+                    <div class="shape-background">
+                        <p id="player-display" class="shape">❔</p>
+                    </div>
+                    <p class="shape-description">Your shape</p>
                 </div>
                 <div class="shape-display">
-                    <p id="computer-display" class="shape">&nbsp;</p>
-                    <p>Computer's shape</p>
+                    <div class="shape-background">
+                        <p id="computer-display" class="shape">❔</p>
+                    </div>
+                    <p class="shape-description">Computer's shape</p>
                 </div>
             </div>
 
             <div id="control-panel">
                 <button id="ROCK" class="shape-button">✊</button>
-                <button id="PAPER" class="shape-button">🖐</button>
+                <button id="PAPER" class="shape-button">✋</button>
                 <button id="SCISSORS" class="shape-button">✌</button>
                 <br>
                 <button id="play-button">PLAY</button>

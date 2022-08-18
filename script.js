@@ -57,13 +57,13 @@ function compareShapes(playerShape, computerShape) {
 
 function getPlayerShape(shape) {
     switch (shape) {
-        case "🪨":
+        case "✊":
             return "ROCK";
 
-        case "📜":
+        case "✋":
             return "PAPER";
 
-        case "✂️":
+        case "✌":
             return "SCISSORS";
 
         default:
@@ -76,7 +76,7 @@ function getEmoji(textShape) {
         case 'ROCK':
             return '✊';
         case 'PAPER':
-            return '🖐';
+            return '✋';
         case 'SCISSORS':
             return '✌';
     }
@@ -120,12 +120,14 @@ function playGame() {
                 playerScoreCounter.textContent = playerScore;
                 round++;
                 sendToLog(playerShape, computerShape, result, round);
+                roundDisplay.textContent = `Round ${round}`;
                 resetAnim();
                 resetSelection();
                 break;
             case "TIE":
                 round++;
                 sendToLog(playerShape, computerShape, result, round);
+                roundDisplay.textContent = `Round ${round}`;
                 resetAnim();
                 resetSelection();
                 break;
@@ -134,6 +136,7 @@ function playGame() {
                 computerScoreCounter.textContent = computerScore;
                 round++;
                 sendToLog(playerShape, computerShape, result, round);
+                roundDisplay.textContent = `Round ${round}`;
                 resetAnim();
                 resetSelection();
                 break;
@@ -151,6 +154,7 @@ function playGame() {
     const computerShapeDisplay = document.querySelector('#computer-display');
     const matchLog = document.querySelector('#log-text');
     const logDiv = document.querySelector('#match-log');
+    const roundDisplay = document.querySelector('#round-text-display');
 
     let selectedShape;
     let round = 0;
